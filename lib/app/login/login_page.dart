@@ -8,8 +8,24 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Text('Logowanie'),
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [Colors.blueGrey, Colors.black],
+        ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.only(top: 100, left: 20),
+        child: Text(
+          'Logowanie',
+          style: GoogleFonts.nunito(
+            fontSize: 40,
+            color: Colors.white,
+          ),
+        ),
+      ),
     );
   }
 }
