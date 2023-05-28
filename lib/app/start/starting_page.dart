@@ -1,6 +1,6 @@
+import 'package:estate_community_app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 
 class StartingPage extends StatelessWidget {
   const StartingPage({
@@ -31,7 +31,13 @@ class StartingPage extends StatelessWidget {
                 ),
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => const LoginPage(),
+                    ),
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.transparent,
                     foregroundColor: Colors.white,
