@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "720654253460",
+    "project_id": "estate-community-app",
+    "storage_bucket": "estate-community-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:720654253460:android:830fb3bb66b4a85e326381",
+        "android_client_info": {
+          "package_name": "com.michaltrzopek.estate_community_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPPe8-bPdBe-INa97mtfpIpBCvPB4O5-s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

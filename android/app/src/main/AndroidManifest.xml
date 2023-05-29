@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.estate_community_app">
+    package="com.michaltrzopek.estate_community_app">
    <application
         android:label="estate_community_app"
         android:name="${applicationName}"
