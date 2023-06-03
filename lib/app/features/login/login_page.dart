@@ -44,13 +44,31 @@ class _LoginPageState extends State<LoginPage> {
               ),
               const SizedBox(height: 200),
               Padding(
+                padding: const EdgeInsets.only(right: 300),
+                child: Text(
+                  'Login',
+                  style:
+                      GoogleFonts.albertSans(color: Colors.white, fontSize: 20),
+                ),
+              ),
+              Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: TextField(
                   controller: widget.emailController,
                   style: const TextStyle(color: Colors.white),
                   decoration: const InputDecoration(
-                      hintText: 'Wpisz nazwę użytkownika',
-                      fillColor: Colors.white),
+                    hintText: 'Wpisz nazwę użytkownika',
+                    hintStyle: TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 300),
+                child: Text(
+                  'Hasło',
+                  style:
+                      GoogleFonts.albertSans(color: Colors.white, fontSize: 20),
                 ),
               ),
               Padding(
@@ -60,7 +78,11 @@ class _LoginPageState extends State<LoginPage> {
                   obscureText: true,
                   style: const TextStyle(color: Colors.white),
                   decoration: const InputDecoration(
-                      hintText: 'Wpisz hasło', fillColor: Colors.white),
+                    hintText: 'Wpisz hasło',
+                    fillColor: Colors.white,
+                    hintStyle: TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
               const SizedBox(height: 30),
