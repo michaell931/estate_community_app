@@ -59,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
                   decoration: const InputDecoration(
                     hintText: 'Wpisz nazwę użytkownika',
                     hintStyle: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold),
+                        color: Colors.grey, fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
@@ -81,7 +81,7 @@ class _LoginPageState extends State<LoginPage> {
                     hintText: 'Wpisz hasło',
                     fillColor: Colors.white,
                     hintStyle: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold),
+                        color: Colors.grey, fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
