@@ -36,7 +36,7 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               const SizedBox(height: 100),
               Text(
-                isCreatingAccount == true ? 'Rejetracja' : 'Logowanie',
+                isCreatingAccount == true ? 'Rejestracja' : 'Logowanie',
                 style: GoogleFonts.nunito(
                   fontSize: 42,
                   color: Colors.white,
