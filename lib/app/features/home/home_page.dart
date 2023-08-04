@@ -20,22 +20,22 @@ class _HomePageState extends State<HomePage> {
         title: Text('Witaj ${widget.user.email}'),
       ),
       body: Builder(builder: (context) {
-        if (currentIndex == 1) {
+        if (currentIndex == 0) {
           return const Center(
             child: Text('Aktualności'),
           );
         }
-        if (currentIndex == 2) {
+        if (currentIndex == 1) {
           return const Center(
             child: Text('Mapa parkingu'),
           );
         }
-        if (currentIndex == 3) {
+        if (currentIndex == 2) {
           return const Center(
             child: Text('Forum'),
           );
         }
-        if (currentIndex == 4) {
+        if (currentIndex == 3) {
           return const Center(
             child: Text('Odpady'),
           );
@@ -45,6 +45,9 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text('Jesteś zalogowany jako ${widget.user.email}'),
+              const SizedBox(
+                height: 20,
+              ),
               ElevatedButton(
                   onPressed: () {
                     FirebaseAuth.instance.signOut();
@@ -68,13 +71,13 @@ class _HomePageState extends State<HomePage> {
         },
         items: const [
           BottomNavigationBarItem(
-              icon: Icon(Icons.person), label: 'Moje konto'),
-          BottomNavigationBarItem(
               icon: Icon(Icons.newspaper), label: 'Aktualności'),
           BottomNavigationBarItem(
               icon: Icon(Icons.local_parking), label: 'Mapa parkingu'),
           BottomNavigationBarItem(icon: Icon(Icons.forum), label: 'Forum'),
           BottomNavigationBarItem(icon: Icon(Icons.delete), label: 'Odpady'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.person), label: 'Moje konto'),
         ],
         fixedColor: Colors.blue,
         unselectedItemColor: Colors.blue,

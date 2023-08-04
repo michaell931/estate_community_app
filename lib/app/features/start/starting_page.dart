@@ -26,8 +26,9 @@ class StartingPage extends StatelessWidget {
               Text(
                 'APARTAMENTY ZŁOTA 1',
                 style: GoogleFonts.nunito(
-                  color: Colors.yellowAccent,
-                  fontSize: 27,
+                  color: Colors.yellow,
+                  fontSize: 30,
+                  textStyle: const TextStyle(decoration: TextDecoration.none),
                 ),
               ),
               ElevatedButton(
