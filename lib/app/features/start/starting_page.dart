@@ -12,7 +12,7 @@ class StartingPage extends StatelessWidget {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('images/blok.jpg'),
+          image: AssetImage('images/zielone_bloki.jpg'),
           fit: BoxFit.cover,
         ),
       ),
@@ -24,10 +24,10 @@ class StartingPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'APARTAMENTY ZŁOTA 1',
-                style: GoogleFonts.nunito(
-                  color: Colors.yellow,
-                  fontSize: 30,
+                'DEVELOPER APP',
+                style: GoogleFonts.museoModerno(
+                  color: Colors.white,
+                  fontSize: 45,
                   textStyle: const TextStyle(decoration: TextDecoration.none),
                 ),
               ),
@@ -40,18 +40,15 @@ class StartingPage extends StatelessWidget {
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.transparent,
-                    foregroundColor: Colors.white,
-                    minimumSize: const Size(300, 50),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    textStyle: const TextStyle(
-                        fontSize: 25, fontWeight: FontWeight.bold),
-                    side: const BorderSide(
-                      width: 1.0,
-                      color: Colors.white,
-                    )),
+                  backgroundColor: Colors.black,
+                  foregroundColor: Colors.white,
+                  minimumSize: const Size(300, 50),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  textStyle: const TextStyle(
+                      fontSize: 25, fontWeight: FontWeight.bold),
+                ),
                 child: const Text('Przejdź do aplikacji'),
               )
             ],
