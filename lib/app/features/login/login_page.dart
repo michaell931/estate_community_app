@@ -42,6 +42,11 @@ class _LoginPageState extends State<LoginPage> {
                   color: Colors.white,
                 ),
               ),
+              const SizedBox(height: 20),
+              Text(
+                'Stwórz społeczność swojej nieruchomości',
+                style: GoogleFonts.nunito(color: Colors.white),
+              ),
               const SizedBox(height: 200),
               Padding(
                 padding: const EdgeInsets.only(right: 300),
@@ -57,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
                   controller: widget.emailController,
                   style: const TextStyle(color: Colors.white),
                   decoration: const InputDecoration(
-                    hintText: 'Wpisz nazwę użytkownika',
+                    hintText: 'Wpisz nazwę użytkownika',
                     hintStyle: TextStyle(
                         color: Colors.grey, fontWeight: FontWeight.bold),
                   ),

@@ -40,6 +40,8 @@ dependencies:
   firebase_core: ^2.14.0
   firebase_auth: ^4.6.3
   flutter_bloc: ^8.1.3
+  flutterfire_ui: ^0.4.3+20
+  cloud_firestore: ^4.8.4
 
  
 
