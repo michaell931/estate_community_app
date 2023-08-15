@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:estate_community_app/app/app.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -18,18 +19,29 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.blueGrey,
       appBar: AppBar(
-        title: const Text('AKTUALNOŚCI'),
+        title: const Text('Witaj!'),
       ),
       body: Builder(builder: (context) {
         if (currentIndex == 0) {
-          return ListView(
-            children: const [
-              NewsWidget('News 1'),
-              NewsWidget('News 2'),
-              NewsWidget('News 3'),
-              NewsWidget('News 4'),
-            ],
-          );
+          return StreamBuilder<QuerySnapshot>(
+              stream: FirebaseFirestore.instance.collection('news').snapshots(),
+              builder: (context, snapshot) {
+                if (snapshot.hasError) {
+                  return const Text('Wystąpił nieoczekiwany problem');
+                }
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Text('Proszę czekać, trwa ładowanie');
+                }
+
+                final documents = snapshot.data!.docs;
+                return ListView(
+                  children: [
+                    for (final document in documents) ...[
+                      NewsWidget(document['title']),
+                    ],
+                  ],
+                );
+              });
         }
         if (currentIndex == 1) {
           return const Center(
