@@ -18,12 +18,17 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.blueGrey,
       appBar: AppBar(
-        title: Text('Witaj ${widget.user.email}'),
+        title: const Text('AKTUALNOŚCI'),
       ),
       body: Builder(builder: (context) {
         if (currentIndex == 0) {
-          return const Center(
-            child: Text('Aktualności'),
+          return ListView(
+            children: const [
+              NewsWidget('News 1'),
+              NewsWidget('News 2'),
+              NewsWidget('News 3'),
+              NewsWidget('News 4'),
+            ],
           );
         }
         if (currentIndex == 1) {
@@ -83,6 +88,25 @@ class _HomePageState extends State<HomePage> {
         fixedColor: Colors.blue,
         unselectedItemColor: Colors.blue,
       ),
+    );
+  }
+}
+
+class NewsWidget extends StatelessWidget {
+  const NewsWidget(
+    this.title, {
+    super.key,
+  });
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: const Color.fromARGB(255, 217, 159, 145),
+      padding: const EdgeInsets.all(40),
+      margin: const EdgeInsets.all(30),
+      child: Text(title),
     );
   }
 }
