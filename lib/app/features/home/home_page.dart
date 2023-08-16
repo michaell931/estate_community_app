@@ -44,19 +44,38 @@ class _HomePageState extends State<HomePage> {
               });
         }
         if (currentIndex == 1) {
-          return const Center(
-            child: Text('Mapa parkingu'),
+          return Container(
+            padding: const EdgeInsets.all(5),
+            margin: const EdgeInsets.all(5),
+            child: const Center(
+              child: Image(image: AssetImage('images/parkingplan.jpg')),
+            ),
           );
         }
         if (currentIndex == 2) {
-          return const Center(
-            child: Text('Forum'),
-          );
+          return StreamBuilder<QuerySnapshot>(
+              stream:
+                  FirebaseFirestore.instance.collection('forum').snapshots(),
+              builder: (context, snapshot) {
+                if (snapshot.hasError) {
+                  return const Text('Wystąpił nieoczekiwany problem');
+                }
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Text('Proszę czekać, trwa ładowanie');
+                }
+
+                final documents = snapshot.data!.docs;
+                return ListView(
+                  children: [
+                    for (final document in documents) ...[
+                      NewsWidget(document['title']),
+                    ],
+                  ],
+                );
+              });
         }
         if (currentIndex == 3) {
-          return const Center(
-            child: Text('Odpady'),
-          );
+          return const Scaffold();
         }
         return Center(
           child: Column(
@@ -115,9 +134,9 @@ class NewsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: const Color.fromARGB(255, 217, 159, 145),
-      padding: const EdgeInsets.all(40),
-      margin: const EdgeInsets.all(30),
+      color: const Color.fromARGB(255, 103, 209, 120),
+      padding: const EdgeInsets.all(50),
+      margin: const EdgeInsets.all(20),
       child: Text(title),
     );
   }
