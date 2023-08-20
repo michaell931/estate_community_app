@@ -24,13 +24,34 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.blueGrey,
       appBar: AppBar(
         actions: [
-          IconButton(
-              icon: const Icon(Icons.add, color: Colors.white, size: 34.0),
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (_) => const AddPage(),
-                ));
-              }),
+          Builder(builder: (context) {
+            if (currentIndex == 2) {
+              return IconButton(
+                  icon: const Icon(Icons.add, color: Colors.white, size: 34.0),
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (_) => const AddPage(),
+                    ));
+                  });
+            } else {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Center(
+                    child: TextButton(
+                      onPressed: () {},
+                      child: const Text(
+                        'Zgłoś',
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            }
+          }),
         ],
         title: const Text('Witaj!'),
       ),
