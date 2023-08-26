@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:estate_community_app/app/features/forum/forum_page.dart';
 import 'package:flutter/material.dart';
 
 class AddPage extends StatefulWidget {
@@ -16,12 +18,26 @@ class _AddPageState extends State<AddPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        //przycisk + do ustalenia
+        // actions: [
+        //   IconButton(
+        //       icon: const Icon(Icons.add, color: Colors.white, size: 34.0),
+        //       onPressed: () {
+        //         FirebaseFirestore.instance.collection('forum').add({
+        //           'theme': postTheme,
+        //           'content': postContent,
+        //         });
+        //       }),
+        // ],
+        title: const Text('Dodaj nowy post'),
+      ),
       resizeToAvoidBottomInset: false,
       body: Center(
         child: Column(
           children: [
             const SizedBox(
-              height: 70,
+              height: 40,
             ),
             SizedBox(
               width: 350,
@@ -35,7 +51,7 @@ class _AddPageState extends State<AddPage> {
                 ),
                 onChanged: (newValue) {
                   setState(() {
-                    newValue = postTheme;
+                    postTheme = newValue;
                   });
                 },
               ),
@@ -46,26 +62,47 @@ class _AddPageState extends State<AddPage> {
             SizedBox(
               width: 350,
               child: TextField(
+                keyboardType: TextInputType.text,
+                minLines: 1,
+                maxLines: 9,
                 decoration: const InputDecoration(
                   prefixIcon: Icon(Icons.newspaper),
                   labelText: 'Treść posta',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(15)),
                   ),
-                  contentPadding: EdgeInsets.symmetric(vertical: 300),
+                  contentPadding: EdgeInsets.symmetric(vertical: 20),
                 ),
                 onChanged: (newValue) {
                   setState(() {
-                    newValue = postContent;
+                    postContent = newValue;
                   });
                 },
               ),
             ),
+            const SizedBox(
+              height: 320,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                ElevatedButton(onPressed: () {}, child: const Text('Dodaj')),
-                ElevatedButton(onPressed: () {}, child: const Text('Powrót')),
+                ElevatedButton(
+                    onPressed: postTheme.isEmpty || postContent.isEmpty
+                        ? null
+                        : () {
+                            FirebaseFirestore.instance.collection('forum').add({
+                              'theme': postTheme,
+                              'content': postContent,
+                            });
+                          },
+                    child: const Text('Dodaj post')),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).pop(MaterialPageRoute(
+                        builder: (_) => const ForumPage(),
+                      ));
+                    },
+                    child: const Text('Powrót bez zapisu')),
               ],
             )
           ],

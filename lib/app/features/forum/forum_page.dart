@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:estate_community_app/app/features/news/news_page.dart';
 import 'package:flutter/material.dart';
 
 class ForumPage extends StatelessWidget {
@@ -31,13 +30,32 @@ class ForumPage extends StatelessWidget {
                         .doc(document.id)
                         .delete();
                   },
-                  child: NewsWidget(
-                    document['title'],
+                  child: PostWidget(
+                    document['theme'],
                   ),
                 ),
               ],
             ],
           );
         });
+  }
+}
+
+class PostWidget extends StatelessWidget {
+  const PostWidget(
+    this.title, {
+    super.key,
+  });
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.lime,
+      padding: const EdgeInsets.all(50),
+      margin: const EdgeInsets.all(20),
+      child: Text(title),
+    );
   }
 }
