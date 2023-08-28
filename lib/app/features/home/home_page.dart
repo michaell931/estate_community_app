@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueGrey,
+      backgroundColor: Colors.black,
       appBar: AppBar(
         actions: [
           Builder(builder: (context) {
@@ -68,25 +68,34 @@ class _HomePageState extends State<HomePage> {
         }
         return UserPage(email: widget.user.email);
       }),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentIndex,
-        onTap: (newIndex) {
-          setState(() {
-            currentIndex = newIndex;
-          });
-        },
-        items: const [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.newspaper), label: 'Aktualności'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.local_parking), label: 'Mapa parkingu'),
-          BottomNavigationBarItem(icon: Icon(Icons.forum), label: 'Forum'),
-          BottomNavigationBarItem(icon: Icon(Icons.delete), label: 'Odpady'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.person), label: 'Moje konto'),
-        ],
-        fixedColor: Colors.blue,
-        unselectedItemColor: Colors.blue,
+      bottomNavigationBar: Theme(
+        data: Theme.of(context).copyWith(
+            // sets the background color of the `BottomNavigationBar`
+            canvasColor: Colors.transparent,
+            // sets the active color of the `BottomNavigationBar` if `Brightness` is light
+            primaryColor: Colors.yellow,
+            textTheme: Theme.of(context).textTheme.copyWith(
+                bodySmall: const TextStyle(
+                    color: Colors
+                        .yellow))), // sets the inactive color of the `BottomNavigationBar`
+        child: BottomNavigationBar(
+          currentIndex: currentIndex,
+          onTap: (newIndex) {
+            setState(() {
+              currentIndex = newIndex;
+            });
+          },
+          items: const [
+            BottomNavigationBarItem(
+                icon: Icon(Icons.newspaper), label: 'Aktualności'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.local_parking), label: 'Mapa parkingu'),
+            BottomNavigationBarItem(icon: Icon(Icons.forum), label: 'Forum'),
+            BottomNavigationBarItem(icon: Icon(Icons.delete), label: 'Odpady'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.person), label: 'Moje konto'),
+          ],
+        ),
       ),
     );
   }

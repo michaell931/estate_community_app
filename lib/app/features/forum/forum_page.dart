@@ -52,7 +52,7 @@ class PostWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.lime,
+      color: Colors.limeAccent,
       padding: const EdgeInsets.all(50),
       margin: const EdgeInsets.all(20),
       child: Text(title),

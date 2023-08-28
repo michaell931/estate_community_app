@@ -18,6 +18,7 @@ class _AddPageState extends State<AddPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         //przycisk + do ustalenia
         // actions: [
@@ -81,7 +82,7 @@ class _AddPageState extends State<AddPage> {
               ),
             ),
             const SizedBox(
-              height: 320,
+              height: 20,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
