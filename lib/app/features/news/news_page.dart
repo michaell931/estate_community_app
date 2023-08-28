@@ -41,7 +41,7 @@ class NewsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.lime,
+      color: const Color.fromARGB(255, 93, 81, 81),
       padding: const EdgeInsets.all(50),
       margin: const EdgeInsets.all(20),
       child: Text(title),
