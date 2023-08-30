@@ -19,7 +19,11 @@ class NewsCubit extends Cubit<NewsState> {
 
   Future<void> start() async {
     emit(
-      const NewsState(documents: [], isLoading: true, errorMessage: ''),
+      const NewsState(
+        documents: [],
+        isLoading: true,
+        errorMessage: '',
+      ),
     );
 
     _streamSubscription = FirebaseFirestore.instance
@@ -27,7 +31,11 @@ class NewsCubit extends Cubit<NewsState> {
         .snapshots()
         .listen((data) {
       emit(
-        NewsState(documents: data.docs, isLoading: false, errorMessage: ''),
+        NewsState(
+          documents: data.docs,
+          isLoading: false,
+          errorMessage: '',
+        ),
       );
     })
       ..onError((error) {
