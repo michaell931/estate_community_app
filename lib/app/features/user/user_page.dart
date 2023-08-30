@@ -1,6 +1,6 @@
-import 'package:estate_community_app/app/app.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:estate_community_app/app/cubit/root_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class UserPage extends StatelessWidget {
   const UserPage({
@@ -29,12 +29,7 @@ class UserPage extends StatelessWidget {
           ),
           ElevatedButton(
               onPressed: () {
-                FirebaseAuth.instance.signOut();
-                Navigator.of(context).pop(
-                  MaterialPageRoute(
-                    builder: (_) => const RootPage(),
-                  ),
-                );
+                context.read<RootCubit>().signOut();
               },
               child: const Text('Wyloguj'))
         ],
