@@ -1,5 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:estate_community_app/app/features/news/cubit/news_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class NewsList extends StatelessWidget {
   const NewsList({
@@ -8,17 +9,21 @@ class NewsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<QuerySnapshot>(
-        stream: FirebaseFirestore.instance.collection('news').snapshots(),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return const Text('Wystąpił nieoczekiwany problem');
+    return BlocProvider(
+      create: (context) => NewsCubit()..start(),
+      child: BlocBuilder<NewsCubit, NewsState>(
+        builder: (context, state) {
+          if (state.errorMessage.isNotEmpty) {
+            return Text(
+              'Wystąpił nieoczekiwany problem: ${state.errorMessage}',
+              style: const TextStyle(color: Colors.white),
+            );
           }
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Text('Proszę czekać, trwa ładowanie');
+          if (state.isLoading) {
+            return const Center(child: CircularProgressIndicator());
           }
 
-          final documents = snapshot.data!.docs;
+          final documents = state.documents;
           return ListView(
             children: [
               for (final document in documents) ...[
@@ -26,7 +31,9 @@ class NewsList extends StatelessWidget {
               ],
             ],
           );
-        });
+        },
+      ),
+    );
   }
 }
 
@@ -44,7 +51,10 @@ class NewsWidget extends StatelessWidget {
       color: const Color.fromARGB(255, 93, 81, 81),
       padding: const EdgeInsets.all(50),
       margin: const EdgeInsets.all(20),
-      child: Text(title),
+      child: Text(
+        title,
+        style: const TextStyle(color: Colors.white, fontSize: 20),
+      ),
     );
   }
 }

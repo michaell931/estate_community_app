@@ -43,6 +43,8 @@ dependencies:
   flutterfire_ui: ^0.4.3+20
   cloud_firestore: ^4.8.4
   auto_size_text_field: ^2.2.1
+  bloc: ^8.1.2
+  meta: ^1.9.1
 
  
 
