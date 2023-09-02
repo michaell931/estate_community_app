@@ -1,5 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:estate_community_app/app/features/forum/cubit/forum_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ForumPage extends StatelessWidget {
   const ForumPage({
@@ -8,27 +9,27 @@ class ForumPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<QuerySnapshot>(
-        stream: FirebaseFirestore.instance.collection('forum').snapshots(),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
+    return BlocProvider(
+      create: (context) => ForumCubit()..start(),
+      child: BlocBuilder<ForumCubit, ForumState>(
+        builder: (context, state) {
+          if (state.errorMessage.isNotEmpty) {
             return const Text('Wystąpił nieoczekiwany problem');
           }
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Text('Proszę czekać, trwa ładowanie');
+          if (state.isLoading) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
           }
 
-          final documents = snapshot.data!.docs;
+          final documents = state.documents;
           return ListView(
             children: [
               for (final document in documents) ...[
                 Dismissible(
                   key: ValueKey(document.id),
                   onDismissed: (_) {
-                    FirebaseFirestore.instance
-                        .collection('forum')
-                        .doc(document.id)
-                        .delete();
+                    context.read<ForumCubit>().deleteDocument(id: document.id);
                   },
                   child: PostWidget(
                     document['theme'],
@@ -37,7 +38,9 @@ class ForumPage extends StatelessWidget {
               ],
             ],
           );
-        });
+        },
+      ),
+    );
   }
 }
 
