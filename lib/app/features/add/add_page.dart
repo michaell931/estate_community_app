@@ -86,7 +86,7 @@ class _AddPageState extends State<AddPage> {
                               'theme': postTheme,
                               'content': postContent,
                             });
-                            // ignore: use_build_context_synchronously
+                            if (!mounted) return;
                             Navigator.of(context).pop(
                               MaterialPageRoute(
                                 builder: (_) => const ForumPage(),

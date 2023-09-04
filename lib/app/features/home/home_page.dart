@@ -73,7 +73,6 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
             canvasColor: Colors.transparent,
-            primaryColor: Colors.yellow,
             textTheme: Theme.of(context)
                 .textTheme
                 .copyWith(bodySmall: const TextStyle(color: Colors.yellow))),
@@ -92,7 +91,7 @@ class _HomePageState extends State<HomePage> {
             BottomNavigationBarItem(icon: Icon(Icons.forum), label: 'Forum'),
             BottomNavigationBarItem(icon: Icon(Icons.delete), label: 'Odpady'),
             BottomNavigationBarItem(
-                icon: Icon(Icons.person), label: 'Moje konto'),
+                icon: Icon(Icons.person), label: 'Użytkownik'),
           ],
         ),
       ),

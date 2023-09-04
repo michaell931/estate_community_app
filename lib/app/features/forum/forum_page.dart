@@ -71,8 +71,8 @@ class PostWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 30),
       child: Container(
         decoration: const BoxDecoration(color: Colors.white38),
-        height: 180,
-        width: 350,
+        height: 150,
+        width: 360,
         child: Center(
           child: Text(
             title,
