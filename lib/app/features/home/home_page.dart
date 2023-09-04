@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
                       onPressed: () {},
                       child: const Text(
                         'Zgłoś',
-                        style: TextStyle(color: Colors.white, fontSize: 20),
+                        style: TextStyle(color: Colors.black, fontSize: 20),
                       ),
                     ),
                   ),
@@ -58,7 +58,9 @@ class _HomePageState extends State<HomePage> {
           return const NewsList();
         }
         if (currentIndex == 1) {
-          return const ParkingPlan();
+          return const ParkingPlan(
+            imageUrl: 'http://mieszkaniajaworze.pl/images/2022/05/04/pzt.jpg',
+          );
         }
         if (currentIndex == 2) {
           return const ForumPage();
@@ -70,14 +72,11 @@ class _HomePageState extends State<HomePage> {
       }),
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
-            // sets the background color of the `BottomNavigationBar`
             canvasColor: Colors.transparent,
-            // sets the active color of the `BottomNavigationBar` if `Brightness` is light
             primaryColor: Colors.yellow,
-            textTheme: Theme.of(context).textTheme.copyWith(
-                bodySmall: const TextStyle(
-                    color: Colors
-                        .yellow))), // sets the inactive color of the `BottomNavigationBar`
+            textTheme: Theme.of(context)
+                .textTheme
+                .copyWith(bodySmall: const TextStyle(color: Colors.yellow))),
         child: BottomNavigationBar(
           currentIndex: currentIndex,
           onTap: (newIndex) {

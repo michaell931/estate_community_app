@@ -28,6 +28,19 @@ class ForumPage extends StatelessWidget {
               for (final document in documents) ...[
                 Dismissible(
                   key: ValueKey(document.id),
+                  background: const DecoratedBox(
+                    decoration: BoxDecoration(color: Colors.red),
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: Padding(
+                        padding: EdgeInsets.only(right: 32),
+                        child: Icon(Icons.delete),
+                      ),
+                    ),
+                  ),
+                  confirmDismiss: (direction) async {
+                    return direction == DismissDirection.endToStart;
+                  },
                   onDismissed: (_) {
                     context.read<ForumCubit>().deleteDocument(id: document.id);
                   },
@@ -54,11 +67,19 @@ class PostWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.limeAccent,
-      padding: const EdgeInsets.all(50),
-      margin: const EdgeInsets.all(20),
-      child: Text(title),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 30),
+      child: Container(
+        decoration: const BoxDecoration(color: Colors.white38),
+        height: 180,
+        width: 350,
+        child: Center(
+          child: Text(
+            title,
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+        ),
+      ),
     );
   }
 }
