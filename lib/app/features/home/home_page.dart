@@ -33,6 +33,25 @@ class _HomePageState extends State<HomePage> {
                       builder: (_) => const AddPage(),
                     ));
                   });
+            }
+            if (currentIndex == 3) {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Center(
+                    child: TextButton(
+                      onPressed: () {},
+                      child: const Text(
+                        'Skonfiguruj',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              );
             } else {
               return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -51,7 +70,11 @@ class _HomePageState extends State<HomePage> {
             }
           }),
         ],
-        title: const Text('Witaj!'),
+        title: const Text(
+          'Miłego dnia!',
+          style: TextStyle(
+              color: Colors.purple, fontWeight: FontWeight.bold, fontSize: 25),
+        ),
       ),
       body: Builder(builder: (context) {
         if (currentIndex == 0) {
