@@ -48,20 +48,10 @@ class _WastePageState extends State<WastePage> {
             firstDay: DateTime.utc(2010, 10, 16),
             lastDay: DateTime.utc(2030, 3, 14),
             startingDayOfWeek: StartingDayOfWeek.monday,
-            onDaySelected: _onDaySelected,
-          ),
-          Container(
-            decoration: const BoxDecoration(color: Colors.green),
-            child: const Column(
-              children: [
-                Text('Tworzywa sztuczne/metale'),
-                Text('Papier'),
-                Text('Szkło'),
-                Text('Zmieszane pozostałości z segregacji'),
-                Text('Popiół'),
-                Text('Bioodpady'),
-              ],
+            calendarStyle: const CalendarStyle(
+              selectedTextStyle: TextStyle(color: Colors.orange, fontSize: 20),
             ),
+            onDaySelected: _onDaySelected,
           ),
         ],
       ),

@@ -14,9 +14,11 @@ class NewsList extends StatelessWidget {
       child: BlocBuilder<NewsCubit, NewsState>(
         builder: (context, state) {
           if (state.errorMessage.isNotEmpty) {
-            return Text(
-              'Wystąpił nieoczekiwany problem: ${state.errorMessage}',
-              style: const TextStyle(color: Colors.white),
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.errorMessage),
+                backgroundColor: Colors.red,
+              ),
             );
           }
           if (state.isLoading) {
