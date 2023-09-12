@@ -31,12 +31,14 @@ class NewsCubit extends Cubit<NewsState> {
         .collection('news')
         .snapshots()
         .listen((data) {
-      final newsModels = data.docs.map((doc) {
-        return NewsModel(
-          title: doc['title'],
-          imageUrl: doc['image_url'],
-        );
-      }).toList();
+      final newsModels = data.docs.map(
+        (doc) {
+          return NewsModel(
+            title: doc['title'],
+            imageUrl: doc['image_url'],
+          );
+        },
+      ).toList();
       emit(
         NewsState(
           documents: newsModels,

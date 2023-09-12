@@ -45,7 +45,7 @@ class ForumPage extends StatelessWidget {
                     context.read<ForumCubit>().deleteDocument(id: document.id);
                   },
                   child: PostWidget(
-                    document['theme'],
+                    document.theme,
                   ),
                 ),
               ],

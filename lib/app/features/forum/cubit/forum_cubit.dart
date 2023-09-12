@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:estate_community_app/models/forum_model.dart';
 import 'package:meta/meta.dart';
 
 part 'forum_state.dart';
@@ -29,9 +30,16 @@ class ForumCubit extends Cubit<ForumState> {
         .collection('forum')
         .snapshots()
         .listen((data) {
+      final forumModels = data.docs.map((doc) {
+        return ForumModel(
+          doc['content'],
+          theme: doc['theme'],
+          doc.id,
+        );
+      }).toList();
       emit(
         ForumState(
-          documents: data.docs,
+          documents: forumModels,
           isLoading: false,
           errorMessage: '',
         ),
