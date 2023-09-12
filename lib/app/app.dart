@@ -1,7 +1,7 @@
 import 'package:estate_community_app/app/cubit/root_cubit.dart';
 import 'package:estate_community_app/app/features/home/home_page.dart';
 import 'package:estate_community_app/app/features/login/login_page.dart';
-import 'package:estate_community_app/app/features/start/splash_screen.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.grey,
       ),
-      home: const SplashScreen(),
+      home: const RootPage(),
     );
   }
 }
