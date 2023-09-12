@@ -2,12 +2,12 @@ part of 'news_cubit.dart';
 
 @immutable
 class NewsState {
-  final List<QueryDocumentSnapshot<Object?>> documents;
+  final List<NewsModel> documents;
   final bool isLoading;
   final String errorMessage;
 
   const NewsState(
-      {required this.documents,
+      {this.documents = const [],
       required this.isLoading,
       required this.errorMessage});
 }

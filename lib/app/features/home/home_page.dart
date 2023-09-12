@@ -61,7 +61,10 @@ class _HomePageState extends State<HomePage> {
                       onPressed: () {},
                       child: const Text(
                         'Zgłoś',
-                        style: TextStyle(color: Colors.black, fontSize: 20),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                        ),
                       ),
                     ),
                   ),

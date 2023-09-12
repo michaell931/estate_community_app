@@ -1,6 +1,6 @@
 class NewsModel {
+  NewsModel({required this.title, required this.imageUrl});
+
   final String title;
   final String imageUrl;
-
-  NewsModel({required this.title, required this.imageUrl});
 }

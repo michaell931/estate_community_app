@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:estate_community_app/models/news_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:meta/meta.dart';
 
@@ -30,9 +31,15 @@ class NewsCubit extends Cubit<NewsState> {
         .collection('news')
         .snapshots()
         .listen((data) {
+      final newsModels = data.docs.map((doc) {
+        return NewsModel(
+          title: doc['title'],
+          imageUrl: doc['image_url'],
+        );
+      }).toList();
       emit(
         NewsState(
-          documents: data.docs,
+          documents: newsModels,
           isLoading: false,
           errorMessage: '',
         ),

@@ -25,14 +25,14 @@ class NewsList extends StatelessWidget {
             return const Center(child: CircularProgressIndicator());
           }
 
-          final documents = state.documents;
+          final docs = state.documents;
 
           return ListView(
             children: [
-              for (final document in documents) ...[
+              for (final doc in docs) ...[
                 NewsWidget(
-                  document['title'],
-                  imageUrl: document['image_url'],
+                  doc.title,
+                  imageUrl: doc.imageUrl,
                 ),
               ],
             ],
