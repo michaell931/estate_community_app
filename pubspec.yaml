@@ -42,38 +42,21 @@ dependencies:
   flutter_bloc: ^8.1.3
   flutterfire_ui: ^0.4.3+20
   cloud_firestore: ^4.8.4
-  auto_size_text_field: ^2.2.1
+  flutter_native_splash: ^2.3.2
+  
   bloc: ^8.1.2
   meta: ^1.9.1
   photo_view: ^0.14.0
   table_calendar: ^3.0.9
   intl: ^0.18.1
-  shared_preferences: ^2.2.1
+  
   
 
  
 
 dev_dependencies:
   
- flutter_launcher_icons: "^0.13.1"
-
-flutter_launcher_icons:
-  android: "launcher_icon"
-  ios: true
-  image_path: "assets/icon/flat.png"
-  min_sdk_android: 21 # android min sdk min:16, default 21
-  web:
-    generate: true
-    image_path: "assets/icon/flat.png"
-    background_color: "#hexcode"
-    theme_color: "#hexcode"
-  windows:
-    generate: true
-    image_path: "assets/icon/flat.png"
-    icon_size: 48 # min:48, max:256, default: 48
-  macos:
-    generate: true
-    image_path: "assets/icon/flat.png"
+ 
 
   flutter_test:
     sdk: flutter

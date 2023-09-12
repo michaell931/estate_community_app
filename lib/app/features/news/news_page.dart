@@ -26,10 +26,14 @@ class NewsList extends StatelessWidget {
           }
 
           final documents = state.documents;
+
           return ListView(
             children: [
               for (final document in documents) ...[
-                NewsWidget(document['title']),
+                NewsWidget(
+                  document['title'],
+                  imageUrl: document['image_url'],
+                ),
               ],
             ],
           );
@@ -43,19 +47,42 @@ class NewsWidget extends StatelessWidget {
   const NewsWidget(
     this.title, {
     super.key,
+    required this.imageUrl,
   });
 
   final String title;
+  final String imageUrl;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: const Color.fromARGB(255, 93, 81, 81),
-      padding: const EdgeInsets.all(50),
+      color: const Color.fromARGB(255, 44, 44, 44),
+      // padding: const EdgeInsets.all(40),
       margin: const EdgeInsets.all(20),
-      child: Text(
-        title,
-        style: const TextStyle(color: Colors.white, fontSize: 20),
+
+      child: Row(
+        children: [
+          Container(
+            height: 120,
+            width: 120,
+            padding: const EdgeInsets.all(0),
+            margin: const EdgeInsets.all(0),
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: NetworkImage(imageUrl), fit: BoxFit.fitHeight),
+            ),
+            child: const SizedBox.shrink(),
+          ),
+          const SizedBox(
+            width: 40,
+          ),
+          Expanded(
+            child: Text(
+              title,
+              style: const TextStyle(color: Colors.white, fontSize: 20),
+            ),
+          ),
+        ],
       ),
     );
   }
