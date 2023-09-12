@@ -71,9 +71,9 @@ class _HomePageState extends State<HomePage> {
           }),
         ],
         title: const Text(
-          'Miłego dnia!',
+          'Dobrego dnia!',
           style: TextStyle(
-              color: Colors.purple, fontWeight: FontWeight.bold, fontSize: 25),
+              color: Colors.yellow, fontWeight: FontWeight.bold, fontSize: 20),
         ),
       ),
       body: Builder(builder: (context) {

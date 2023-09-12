@@ -68,15 +68,16 @@ class PostWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 30),
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
       child: Container(
-        decoration: const BoxDecoration(color: Colors.white38),
+        decoration: const BoxDecoration(color: Color.fromARGB(255, 44, 44, 44)),
         height: 150,
-        width: 360,
+        width: 370,
         child: Center(
           child: Text(
             title,
-            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            style: const TextStyle(
+                color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
           ),
         ),
       ),
