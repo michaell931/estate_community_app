@@ -1,4 +1,5 @@
 import 'package:estate_community_app/app/features/forum/cubit/forum_cubit.dart';
+import 'package:estate_community_app/models/forum_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,7 +14,8 @@ class ForumPage extends StatelessWidget {
       create: (context) => ForumCubit()..start(),
       child: BlocBuilder<ForumCubit, ForumState>(
         builder: (context, state) {
-          if (state.errorMessage.isNotEmpty) {
+          final forumModels = state.documents;
+          if (forumModels.isEmpty) {
             return const Text('Wystąpił nieoczekiwany problem');
           }
           if (state.isLoading) {
@@ -22,12 +24,11 @@ class ForumPage extends StatelessWidget {
             );
           }
 
-          final documents = state.documents;
           return ListView(
             children: [
-              for (final document in documents) ...[
+              for (final forumModel in forumModels) ...[
                 Dismissible(
-                  key: ValueKey(document.id),
+                  key: ValueKey(forumModel.id),
                   background: const DecoratedBox(
                     decoration: BoxDecoration(color: Colors.red),
                     child: Align(
@@ -42,10 +43,12 @@ class ForumPage extends StatelessWidget {
                     return direction == DismissDirection.endToStart;
                   },
                   onDismissed: (_) {
-                    context.read<ForumCubit>().deleteDocument(id: document.id);
+                    context
+                        .read<ForumCubit>()
+                        .deleteDocument(id: forumModel.id);
                   },
                   child: PostWidget(
-                    document.theme,
+                    forumModel: forumModel,
                   ),
                 ),
               ],
@@ -58,12 +61,12 @@ class ForumPage extends StatelessWidget {
 }
 
 class PostWidget extends StatelessWidget {
-  const PostWidget(
-    this.title, {
-    super.key,
-  });
+  const PostWidget({
+    Key? key,
+    required this.forumModel,
+  }) : super(key: key);
 
-  final String title;
+  final ForumModel forumModel;
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +78,7 @@ class PostWidget extends StatelessWidget {
         width: 370,
         child: Center(
           child: Text(
-            title,
+            forumModel.theme,
             style: const TextStyle(
                 color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
           ),

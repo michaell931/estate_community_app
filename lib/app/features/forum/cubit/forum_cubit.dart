@@ -32,9 +32,9 @@ class ForumCubit extends Cubit<ForumState> {
         .listen((data) {
       final forumModels = data.docs.map((doc) {
         return ForumModel(
-          doc['content'],
+          content: doc['content'],
           theme: doc['theme'],
-          doc.id,
+          id: doc.id,
         );
       }).toList();
       emit(
