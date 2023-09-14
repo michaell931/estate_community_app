@@ -1,4 +1,5 @@
 import 'package:estate_community_app/app/features/news/cubit/news_cubit.dart';
+import 'package:estate_community_app/models/news_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -11,9 +12,10 @@ class NewsList extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => NewsCubit()..start(),
-      child: BlocBuilder<NewsCubit, NewsState>(
-        builder: (context, state) {
-          if (state.errorMessage.isNotEmpty) {
+      child: BlocConsumer<NewsCubit, NewsState>(
+        listener: (context, state) {
+          final newsModels = state.documents;
+          if (newsModels.isEmpty) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(state.errorMessage),
@@ -21,21 +23,25 @@ class NewsList extends StatelessWidget {
               ),
             );
           }
-          if (state.isLoading) {
-            return const Center(child: CircularProgressIndicator());
-          }
+        },
+        builder: (context, state) {
+          return BlocBuilder<NewsCubit, NewsState>(
+            builder: (context, state) {
+              final newsModels = state.documents;
+              if (state.isLoading) {
+                return const Center(child: CircularProgressIndicator());
+              }
 
-          final docs = state.documents;
-
-          return ListView(
-            children: [
-              for (final doc in docs) ...[
-                NewsWidget(
-                  doc.title,
-                  imageUrl: doc.imageUrl,
-                ),
-              ],
-            ],
+              return ListView(
+                children: [
+                  for (final newsModel in newsModels) ...[
+                    NewsWidget(
+                      newsModel: newsModel,
+                    ),
+                  ],
+                ],
+              );
+            },
           );
         },
       ),
@@ -44,14 +50,12 @@ class NewsList extends StatelessWidget {
 }
 
 class NewsWidget extends StatelessWidget {
-  const NewsWidget(
-    this.title, {
-    super.key,
-    required this.imageUrl,
-  });
+  const NewsWidget({
+    Key? key,
+    required this.newsModel,
+  }) : super(key: key);
 
-  final String title;
-  final String imageUrl;
+  final NewsModel newsModel;
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +73,8 @@ class NewsWidget extends StatelessWidget {
             margin: const EdgeInsets.all(0),
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: NetworkImage(imageUrl), fit: BoxFit.fitHeight),
+                  image: NetworkImage(newsModel.imageUrl),
+                  fit: BoxFit.fitHeight),
             ),
             child: const SizedBox.shrink(),
           ),
@@ -78,7 +83,7 @@ class NewsWidget extends StatelessWidget {
           ),
           Expanded(
             child: Text(
-              title,
+              newsModel.title,
               style: const TextStyle(color: Colors.white, fontSize: 20),
             ),
           ),
