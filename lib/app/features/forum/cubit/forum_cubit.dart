@@ -3,12 +3,13 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:estate_community_app/models/forum_model.dart';
+import 'package:estate_community_app/repositories/forum_repository.dart';
 import 'package:meta/meta.dart';
 
 part 'forum_state.dart';
 
 class ForumCubit extends Cubit<ForumState> {
-  ForumCubit()
+  ForumCubit(this._forumRepository)
       : super(const ForumState(
           documents: [],
           errorMessage: '',
@@ -16,6 +17,7 @@ class ForumCubit extends Cubit<ForumState> {
         ));
 
   StreamSubscription? _streamSubscription;
+  final ForumRepository _forumRepository;
 
   Future<void> start() async {
     emit(
@@ -26,20 +28,10 @@ class ForumCubit extends Cubit<ForumState> {
       ),
     );
 
-    _streamSubscription = FirebaseFirestore.instance
-        .collection('forum')
-        .snapshots()
-        .listen((data) {
-      final forumModels = data.docs.map((doc) {
-        return ForumModel(
-          content: doc['content'],
-          theme: doc['theme'],
-          id: doc.id,
-        );
-      }).toList();
+    _streamSubscription = _forumRepository.getItemsStream().listen((data) {
       emit(
         ForumState(
-          documents: forumModels,
+          documents: data,
           isLoading: false,
           errorMessage: '',
         ),
