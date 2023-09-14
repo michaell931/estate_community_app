@@ -1,20 +1,22 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:estate_community_app/models/news_model.dart';
+import 'package:estate_community_app/repositories/news_repository.dart';
 import 'package:flutter/foundation.dart';
 import 'package:meta/meta.dart';
 
 part 'news_state.dart';
 
 class NewsCubit extends Cubit<NewsState> {
-  NewsCubit()
+  NewsCubit(this._newsRepository)
       : super(const NewsState(
           documents: [],
           errorMessage: '',
           isLoading: false,
         ));
+
+  final NewsRepository _newsRepository;
 
   StreamSubscription? _streamSubscription;
 
@@ -27,21 +29,10 @@ class NewsCubit extends Cubit<NewsState> {
       ),
     );
 
-    _streamSubscription = FirebaseFirestore.instance
-        .collection('news')
-        .snapshots()
-        .listen((data) {
-      final newsModels = data.docs.map(
-        (doc) {
-          return NewsModel(
-            title: doc['title'],
-            imageUrl: doc['image_url'],
-          );
-        },
-      ).toList();
+    _streamSubscription = _newsRepository.getItemsStream().listen((data) {
       emit(
         NewsState(
-          documents: newsModels,
+          documents: data,
           isLoading: false,
           errorMessage: '',
         ),
