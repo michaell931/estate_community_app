@@ -34,6 +34,20 @@ class _HomePageState extends State<HomePage> {
                     ));
                   });
             }
+            if (currentIndex == 1) {
+              return Center(
+                child: TextButton(
+                  onPressed: () {},
+                  child: const Text(
+                    'Mapa parkingu osiedla',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+              );
+            }
             if (currentIndex == 3) {
               return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -74,7 +88,7 @@ class _HomePageState extends State<HomePage> {
           }),
         ],
         title: const Text(
-          'Dobrego dnia!',
+          'Witaj!',
           style: TextStyle(
               color: Colors.yellow, fontWeight: FontWeight.bold, fontSize: 20),
         ),
