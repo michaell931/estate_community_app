@@ -12,9 +12,20 @@ class NewsRepository {
           return NewsModel(
             title: doc['title'],
             imageUrl: doc['image_url'],
+            id: doc['id'],
           );
         },
       ).toList();
     });
+  }
+
+  Future<NewsModel> get({required String id}) async {
+    final doc =
+        await FirebaseFirestore.instance.collection('news').doc(id).get();
+    return NewsModel(
+      title: doc['title'],
+      imageUrl: doc['image_url'],
+      id: doc['id'],
+    );
   }
 }

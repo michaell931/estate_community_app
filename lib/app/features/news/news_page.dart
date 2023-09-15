@@ -1,4 +1,5 @@
 import 'package:estate_community_app/app/features/news/cubit/news_cubit.dart';
+import 'package:estate_community_app/app/features/news_details/pages/news_details_page.dart';
 import 'package:estate_community_app/models/news_model.dart';
 import 'package:estate_community_app/repositories/news_repository.dart';
 import 'package:flutter/material.dart';
@@ -60,35 +61,44 @@ class NewsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: const Color.fromARGB(255, 44, 44, 44),
-      // padding: const EdgeInsets.all(40),
-      margin: const EdgeInsets.all(20),
+    return InkWell(
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => NewsDetailsPage(id: newsModel.id),
+          ),
+        );
+      },
+      child: Container(
+        color: const Color.fromARGB(255, 44, 44, 44),
+        // padding: const EdgeInsets.all(40),
+        margin: const EdgeInsets.all(20),
 
-      child: Row(
-        children: [
-          Container(
-            height: 120,
-            width: 120,
-            padding: const EdgeInsets.all(0),
-            margin: const EdgeInsets.all(0),
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: NetworkImage(newsModel.imageUrl),
-                  fit: BoxFit.fitHeight),
+        child: Row(
+          children: [
+            Container(
+              height: 120,
+              width: 120,
+              padding: const EdgeInsets.all(0),
+              margin: const EdgeInsets.all(0),
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: NetworkImage(newsModel.imageUrl),
+                    fit: BoxFit.fitHeight),
+              ),
+              child: const SizedBox.shrink(),
             ),
-            child: const SizedBox.shrink(),
-          ),
-          const SizedBox(
-            width: 40,
-          ),
-          Expanded(
-            child: Text(
-              newsModel.title,
-              style: const TextStyle(color: Colors.white, fontSize: 20),
+            const SizedBox(
+              width: 40,
             ),
-          ),
-        ],
+            Expanded(
+              child: Text(
+                newsModel.title,
+                style: const TextStyle(color: Colors.white, fontSize: 20),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
