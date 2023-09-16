@@ -42,16 +42,13 @@ class NewsDetailsWidget extends StatelessWidget {
     return Material(
       child: Container(
         color: const Color.fromARGB(255, 44, 44, 44),
-        // padding: const EdgeInsets.all(40),
-        margin: const EdgeInsets.all(20),
-
         child: Row(
           children: [
             Container(
               height: 720,
               width: 120,
               padding: const EdgeInsets.all(0),
-              margin: const EdgeInsets.all(0),
+              margin: const EdgeInsets.all(5),
               decoration: BoxDecoration(
                 image: DecorationImage(
                     image: NetworkImage(newsModel.imageUrl),
@@ -60,11 +57,11 @@ class NewsDetailsWidget extends StatelessWidget {
               child: const SizedBox.shrink(),
             ),
             const SizedBox(
-              width: 40,
+              width: 20,
             ),
             Expanded(
               child: Text(
-                newsModel.title,
+                newsModel.content,
                 style: const TextStyle(color: Colors.white, fontSize: 20),
               ),
             ),

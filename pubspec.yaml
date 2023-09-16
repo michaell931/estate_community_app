@@ -53,9 +53,9 @@ flutter_native_splash:
   ios: true
   web: false 
   background_image: "images/bloki_nowe.jpg" 
-  image: "images/flat.png"
+  # image: "images/flat.png"
   android_12: 
-    # background_image: "images/bloki_nowe.jpg" 
+    
     image: "images/bloki_nowe.jpg"
 
   

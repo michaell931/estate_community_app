@@ -13,6 +13,7 @@ class NewsRepository {
             title: doc['title'],
             imageUrl: doc['image_url'],
             id: doc['id'],
+            content: doc['content'],
           );
         },
       ).toList();
@@ -26,6 +27,7 @@ class NewsRepository {
       title: doc['title'],
       imageUrl: doc['image_url'],
       id: doc['id'],
+      content: doc['content'],
     );
   }
 }
