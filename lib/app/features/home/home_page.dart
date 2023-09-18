@@ -1,8 +1,9 @@
+import 'package:estate_community_app/app/features/about/about_page.dart';
 import 'package:estate_community_app/app/features/add/add_page.dart';
+import 'package:estate_community_app/app/features/auth/pages/user_profile.dart';
 import 'package:estate_community_app/app/features/forum/forum_page.dart';
 import 'package:estate_community_app/app/features/news/news_page.dart';
 import 'package:estate_community_app/app/features/parking/parkingplan_page.dart';
-import 'package:estate_community_app/app/features/user/user_page.dart';
 import 'package:estate_community_app/app/features/waste/waste_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -67,22 +68,17 @@ class _HomePageState extends State<HomePage> {
                 ],
               );
             } else {
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Center(
-                    child: TextButton(
-                      onPressed: () {},
-                      child: const Text(
-                        'Zgłoś',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+              return TextButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) => const AboutPage(),
+                  ));
+                },
+                child: const Icon(
+                  Icons.info,
+                  color: Colors.black,
+                  size: 35,
+                ),
               );
             }
           }),
@@ -108,7 +104,7 @@ class _HomePageState extends State<HomePage> {
         if (currentIndex == 3) {
           return const WastePage();
         }
-        return UserPage(email: widget.user.email);
+        return const UserProfile();
       }),
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
