@@ -10,12 +10,15 @@ class ForumRepository {
       return querySnapshot.docs.map(
         (doc) {
           return ForumModel(
-            content: doc['content'],
-            theme: doc['theme'],
-            id: doc.id,
-          );
+              content: doc['content'], theme: doc['theme'], id: doc.id);
         },
       ).toList();
     });
+  }
+
+  Future<ForumModel> get({required String id}) async {
+    final doc =
+        await FirebaseFirestore.instance.collection('forum').doc(id).get();
+    return ForumModel(theme: doc['theme'], content: doc['content'], id: doc.id);
   }
 }

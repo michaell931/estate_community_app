@@ -1,4 +1,5 @@
 import 'package:estate_community_app/app/features/forum/cubit/forum_cubit.dart';
+import 'package:estate_community_app/app/features/forum_details/pages/forum_details_page.dart';
 import 'package:estate_community_app/models/forum_model.dart';
 import 'package:estate_community_app/repositories/forum_repository.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +44,7 @@ class ForumPage extends StatelessWidget {
                   confirmDismiss: (direction) async {
                     return direction == DismissDirection.endToStart;
                   },
-                  onDismissed: (_) {
+                  onDismissed: (direction) {
                     context
                         .read<ForumCubit>()
                         .deleteDocument(id: forumModel.id);
@@ -71,17 +72,29 @@ class PostWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-      child: Container(
-        decoration: const BoxDecoration(color: Color.fromARGB(255, 44, 44, 44)),
-        height: 150,
-        width: 370,
-        child: Center(
-          child: Text(
-            forumModel.theme,
-            style: const TextStyle(
-                color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+    return InkWell(
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => ForumDetailsPage(id: forumModel.id),
+          ),
+        );
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+        child: Container(
+          decoration:
+              const BoxDecoration(color: Color.fromARGB(255, 44, 44, 44)),
+          height: 150,
+          width: 370,
+          child: Center(
+            child: Text(
+              forumModel.theme,
+              style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold),
+            ),
           ),
         ),
       ),

@@ -1,5 +1,5 @@
 class ForumModel {
-  ForumModel({required this.content, required this.id, required this.theme});
+  ForumModel({required this.id, required this.content, required this.theme});
 
   final String theme;
   final String content;
