@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> {
                       child: const Text(
                         'Skonfiguruj',
                         style: TextStyle(
-                          color: Colors.black,
+                          color: Colors.white,
                           fontSize: 20,
                         ),
                       ),
@@ -76,7 +76,7 @@ class _HomePageState extends State<HomePage> {
                 },
                 child: const Icon(
                   Icons.info,
-                  color: Colors.black,
+                  color: Colors.blue,
                   size: 35,
                 ),
               );

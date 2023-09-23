@@ -45,23 +45,24 @@ class ForumDetailsWidget extends StatelessWidget {
         child: Row(
           children: [
             Container(
-              height: 720,
+              height: 1000,
               width: 120,
               padding: const EdgeInsets.all(0),
-              margin: const EdgeInsets.all(5),
+              margin: const EdgeInsets.all(0),
               decoration: const BoxDecoration(
-                image:
-                    DecorationImage(image: AssetImage('images/bloki_dev.jpg')),
+                image: DecorationImage(
+                    image: AssetImage('images/meeting.jpg'),
+                    fit: BoxFit.fitHeight),
               ),
               child: const SizedBox.shrink(),
             ),
             const SizedBox(
-              width: 20,
+              width: 15,
             ),
-            Text(forumModel.theme),
             Expanded(
               child: Text(
                 forumModel.content,
+                textAlign: TextAlign.left,
                 style: const TextStyle(color: Colors.white, fontSize: 20),
               ),
             ),

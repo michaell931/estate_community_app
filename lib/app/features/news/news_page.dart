@@ -71,9 +71,7 @@ class NewsWidget extends StatelessWidget {
       },
       child: Container(
         color: const Color.fromARGB(255, 44, 44, 44),
-        // padding: const EdgeInsets.all(40),
         margin: const EdgeInsets.all(20),
-
         child: Row(
           children: [
             Container(

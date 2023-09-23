@@ -1,5 +1,4 @@
 import 'package:estate_community_app/app/cubit/root_cubit.dart';
-import 'package:estate_community_app/app/features/auth/pages/auth_gate.dart';
 import 'package:estate_community_app/app/features/home/home_page.dart';
 import 'package:estate_community_app/app/features/login/login_page.dart';
 
@@ -15,7 +14,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Estate Community App',
       theme: ThemeData(
-        primarySwatch: Colors.grey,
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          primary: const Color.fromARGB(0, 0, 0, 0),
+        ),
       ),
       home: const RootPage(),
     );
