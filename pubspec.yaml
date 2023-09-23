@@ -47,6 +47,7 @@ dependencies:
   photo_view: ^0.14.0
   bloc: ^8.1.2
   meta: ^1.9.1
+  shared_preferences: ^2.2.1
     
 flutter_native_splash:
   android: true

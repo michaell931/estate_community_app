@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage> {
                     child: TextButton(
                       onPressed: () {},
                       child: const Text(
-                        'Skonfiguruj',
+                        'Segreguj śmieci!',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
