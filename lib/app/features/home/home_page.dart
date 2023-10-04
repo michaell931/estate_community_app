@@ -102,7 +102,7 @@ class _HomePageState extends State<HomePage> {
           return const ForumPage();
         }
         if (currentIndex == 3) {
-          return const WastePage();
+          return const MyHomePage();
         }
         return const UserProfile();
       }),

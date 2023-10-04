@@ -43,11 +43,12 @@ dependencies:
   flutterfire_ui: ^0.4.3+20
   cloud_firestore: ^4.8.4
   flutter_native_splash: ^2.3.2
-  table_calendar: ^3.0.9
+  
   photo_view: ^0.14.0
   bloc: ^8.1.2
   meta: ^1.9.1
-  shared_preferences: ^2.2.1
+ 
+  syncfusion_flutter_calendar: ^23.1.38
     
 flutter_native_splash:
   android: true

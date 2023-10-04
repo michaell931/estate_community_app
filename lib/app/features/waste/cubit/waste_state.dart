@@ -1,4 +1,9 @@
-part of 'waste_cubit.dart';
+import 'package:estate_community_app/models/event_model.dart';
 
-@immutable
-class WasteState {}
+class WasteState {
+  final List<TrashCalendarModel> documents;
+
+  const WasteState({
+    this.documents = const [],
+  });
+}
