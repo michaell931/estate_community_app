@@ -25,6 +25,14 @@ class _MyHomePageState extends State<MyHomePage> {
           return Scaffold(
               body: SfCalendar(
             firstDayOfWeek: 1,
+            showNavigationArrow: true,
+            headerHeight: 50,
+            cellBorderColor: Colors.white,
+            monthViewSettings: const MonthViewSettings(
+                showAgenda: true,
+                agendaViewHeight: 200,
+                appointmentDisplayCount: 3),
+
             todayHighlightColor: Colors.amber,
 
             view: CalendarView.month,
@@ -32,9 +40,9 @@ class _MyHomePageState extends State<MyHomePage> {
             // by default the month appointment display mode set as Indicator, we can
             // change the display mode as appointment using the appointment display
             // mode property
-            monthViewSettings: const MonthViewSettings(
-                appointmentDisplayMode:
-                    MonthAppointmentDisplayMode.appointment),
+            // monthViewSettings: const MonthViewSettings(
+            //     appointmentDisplayMode:
+            //         MonthAppointmentDisplayMode.appointment),
           ));
         },
       ),
