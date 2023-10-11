@@ -1,13 +1,14 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:estate_community_app/repositories/root_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:meta/meta.dart';
 
 part 'root_state.dart';
 
 class RootCubit extends Cubit<RootState> {
-  RootCubit()
+  RootCubit(this._rootRepository)
       : super(
           const RootState(
             user: null,
@@ -17,9 +18,10 @@ class RootCubit extends Cubit<RootState> {
         );
 
   StreamSubscription? _streamSubscription;
+  final RootRepository _rootRepository;
 
   Future<void> signOut() async {
-    FirebaseAuth.instance.signOut();
+    await _rootRepository.signOut();
   }
 
   Future<void> start() async {
@@ -31,8 +33,7 @@ class RootCubit extends Cubit<RootState> {
       ),
     );
 
-    _streamSubscription =
-        FirebaseAuth.instance.authStateChanges().listen((user) {
+    _streamSubscription = _rootRepository.authenticationCheck()((user) {
       emit(
         RootState(
           user: user,
@@ -41,15 +42,15 @@ class RootCubit extends Cubit<RootState> {
         ),
       );
     })
-          ..onError((error) {
-            emit(
-              RootState(
-                user: null,
-                isLoading: false,
-                errorMessage: error.toString(),
-              ),
-            );
-          });
+      ..onError((error) {
+        emit(
+          RootState(
+            user: null,
+            isLoading: false,
+            errorMessage: error.toString(),
+          ),
+        );
+      });
   }
 
   @override

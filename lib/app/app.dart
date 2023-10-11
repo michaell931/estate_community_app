@@ -1,6 +1,7 @@
 import 'package:estate_community_app/app/cubit/root_cubit.dart';
 import 'package:estate_community_app/app/features/home/home_page.dart';
 import 'package:estate_community_app/app/features/login/login_page.dart';
+import 'package:estate_community_app/repositories/root_repository.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,7 +32,7 @@ class RootPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => RootCubit()..start(),
+      create: (context) => RootCubit(RootRepository())..start(),
       child: BlocBuilder<RootCubit, RootState>(
         builder: (context, state) {
           final user = state.user;
