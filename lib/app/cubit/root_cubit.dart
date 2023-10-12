@@ -3,9 +3,10 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:estate_community_app/repositories/root_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:meta/meta.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'root_state.dart';
+part 'root_cubit.freezed.dart';
 
 class RootCubit extends Cubit<RootState> {
   RootCubit(this._rootRepository)
