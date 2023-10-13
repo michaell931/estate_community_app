@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class TrashCalendarModel {
-  TrashCalendarModel(
-      {required this.eventName,
-      required this.from,
-      required this.to,
-      required this.background,
-      required this.isAllDay});
+part 'event_model.freezed.dart';
 
-  final String eventName;
-  DateTime from;
-  DateTime to;
-  Color background;
-  bool isAllDay;
+@freezed
+class TrashCalendarModel with _$TrashCalendarModel {
+  factory TrashCalendarModel({
+    required final String eventName,
+    required DateTime from,
+    required DateTime to,
+    required Color background,
+    required bool isAllDay,
+  }) = _TrashCalendarModel;
 }
