@@ -4,10 +4,12 @@ import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:estate_community_app/models/forum_model.dart';
 import 'package:estate_community_app/repositories/forum_repository.dart';
+import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
 part 'forum_state.dart';
 
+@injectable
 class ForumCubit extends Cubit<ForumState> {
   ForumCubit(this._forumRepository)
       : super(const ForumState(

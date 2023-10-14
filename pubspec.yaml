@@ -50,13 +50,15 @@ dependencies:
  
   syncfusion_flutter_calendar: ^23.1.38
   freezed_annotation: ^2.4.1
+  get_it: ^7.6.4
+  injectable: ^2.3.2
     
 flutter_native_splash:
   android: true
   ios: true
   web: false 
   background_image: "images/bloki_nowe.jpg" 
-  # image: "images/flat.png"
+  
   android_12: 
     
     image: "images/bloki_nowe.jpg"
@@ -80,6 +82,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   freezed: ^2.4.5
+  injectable_generator: ^2.4.1
 
     
 

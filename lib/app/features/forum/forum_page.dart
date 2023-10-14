@@ -1,7 +1,7 @@
 import 'package:estate_community_app/app/features/forum/cubit/forum_cubit.dart';
 import 'package:estate_community_app/app/features/forum_details/pages/forum_details_page.dart';
+import 'package:estate_community_app/app/injection_container.dart';
 import 'package:estate_community_app/models/forum_model.dart';
-import 'package:estate_community_app/repositories/forum_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,8 +12,8 @@ class ForumPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => ForumCubit(ForumRepository())..start(),
+    return BlocProvider<ForumCubit>(
+      create: (context) => getIt()..start(),
       child: BlocBuilder<ForumCubit, ForumState>(
         builder: (context, state) {
           final forumModels = state.documents;

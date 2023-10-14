@@ -1,7 +1,9 @@
 import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class RootRepository {
   Future<void> signOut() async {
     FirebaseAuth.instance.signOut();

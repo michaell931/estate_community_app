@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:estate_community_app/models/forum_model.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class ForumRepository {
   Stream<List<ForumModel>> getItemsStream() {
     return FirebaseFirestore.instance

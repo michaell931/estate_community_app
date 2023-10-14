@@ -1,7 +1,7 @@
 import 'package:estate_community_app/app/features/news/cubit/news_cubit.dart';
 import 'package:estate_community_app/app/features/news_details/pages/news_details_page.dart';
+import 'package:estate_community_app/app/injection_container.dart';
 import 'package:estate_community_app/models/news_model.dart';
-import 'package:estate_community_app/repositories/news_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,8 +12,8 @@ class NewsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => NewsCubit(NewsRepository())..start(),
+    return BlocProvider<NewsCubit>(
+      create: (context) => getIt()..start(),
       child: BlocConsumer<NewsCubit, NewsState>(
         listener: (context, state) {
           final newsModels = state.documents;

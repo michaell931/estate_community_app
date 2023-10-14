@@ -4,10 +4,12 @@ import 'package:bloc/bloc.dart';
 import 'package:estate_community_app/repositories/root_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 
 part 'root_state.dart';
 part 'root_cubit.freezed.dart';
 
+@injectable
 class RootCubit extends Cubit<RootState> {
   RootCubit(this._rootRepository)
       : super(
