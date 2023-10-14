@@ -9,9 +9,9 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:estate_community_app/app/cubit/root_cubit.dart' as _i8;
-import 'package:estate_community_app/app/features/forum/cubit/forum_cubit.dart'
+import 'package:estate_community_app/features/forum/cubit/forum_cubit.dart'
     as _i6;
-import 'package:estate_community_app/app/features/news/cubit/news_cubit.dart'
+import 'package:estate_community_app/features/news/cubit/news_cubit.dart'
     as _i7;
 import 'package:estate_community_app/repositories/forum_repository.dart' as _i3;
 import 'package:estate_community_app/repositories/news_repository.dart' as _i4;

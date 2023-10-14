@@ -1,4 +1,4 @@
-import 'package:estate_community_app/app/features/waste/cubit/waste_state.dart';
+import 'package:estate_community_app/features/waste/cubit/waste_state.dart';
 import 'package:estate_community_app/models/event_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

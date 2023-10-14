@@ -1,11 +1,11 @@
-import 'package:estate_community_app/app/features/forum_details/cubit/forum_details_cubit.dart';
-import 'package:estate_community_app/models/forum_model.dart';
-import 'package:estate_community_app/repositories/forum_repository.dart';
+import 'package:estate_community_app/features/news_details/cubit/news_details_cubit.dart';
+import 'package:estate_community_app/models/news_model.dart';
+import 'package:estate_community_app/repositories/news_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ForumDetailsPage extends StatelessWidget {
-  const ForumDetailsPage({super.key, required this.id});
+class NewsDetailsPage extends StatelessWidget {
+  const NewsDetailsPage({super.key, required this.id});
 
   final String id;
 
@@ -13,15 +13,15 @@ class ForumDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          ForumDetailsCubit(ForumRepository())..getPostWithID(id),
-      child: BlocBuilder<ForumDetailsCubit, ForumDetailsState>(
+          NewsDetailsCubit(NewsRepository())..getNewsWithID(id),
+      child: BlocBuilder<NewsDetailsCubit, NewsDetailsState>(
         builder: (context, state) {
-          final forumModels = state.forumModel;
-          if (forumModels == null) {
+          final newsModels = state.newsModel;
+          if (newsModels == null) {
             return const Center(child: CircularProgressIndicator());
           }
           return ListView(
-            children: [ForumDetailsWidget(forumModel: forumModels)],
+            children: [NewsDetailsWidget(newsModel: newsModels)],
           );
         },
       ),
@@ -29,13 +29,13 @@ class ForumDetailsPage extends StatelessWidget {
   }
 }
 
-class ForumDetailsWidget extends StatelessWidget {
-  const ForumDetailsWidget({
+class NewsDetailsWidget extends StatelessWidget {
+  const NewsDetailsWidget({
     Key? key,
-    required this.forumModel,
+    required this.newsModel,
   }) : super(key: key);
 
-  final ForumModel forumModel;
+  final NewsModel newsModel;
 
   @override
   Widget build(BuildContext context) {
@@ -45,24 +45,23 @@ class ForumDetailsWidget extends StatelessWidget {
         child: Row(
           children: [
             Container(
-              height: 1000,
+              height: 720,
               width: 120,
               padding: const EdgeInsets.all(0),
-              margin: const EdgeInsets.all(0),
-              decoration: const BoxDecoration(
+              margin: const EdgeInsets.all(5),
+              decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('images/meeting.jpg'),
+                    image: NetworkImage(newsModel.imageUrl),
                     fit: BoxFit.fitHeight),
               ),
               child: const SizedBox.shrink(),
             ),
             const SizedBox(
-              width: 15,
+              width: 20,
             ),
             Expanded(
               child: Text(
-                forumModel.content,
-                textAlign: TextAlign.left,
+                newsModel.content,
                 style: const TextStyle(color: Colors.white, fontSize: 20),
               ),
             ),

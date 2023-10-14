@@ -1,10 +1,10 @@
-import 'package:estate_community_app/app/features/about/about_page.dart';
-import 'package:estate_community_app/app/features/add/add_page.dart';
-import 'package:estate_community_app/app/features/auth/pages/user_profile.dart';
-import 'package:estate_community_app/app/features/forum/forum_page.dart';
-import 'package:estate_community_app/app/features/news/news_page.dart';
-import 'package:estate_community_app/app/features/parking/parkingplan_page.dart';
-import 'package:estate_community_app/app/features/waste/waste_page.dart';
+import 'package:estate_community_app/features/about/about_page.dart';
+import 'package:estate_community_app/features/add/add_page.dart';
+import 'package:estate_community_app/features/auth/pages/user_profile.dart';
+import 'package:estate_community_app/features/forum/forum_page.dart';
+import 'package:estate_community_app/features/news/news_page.dart';
+import 'package:estate_community_app/features/parking/parkingplan_page.dart';
+import 'package:estate_community_app/features/waste/waste_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 

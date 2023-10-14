@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:estate_community_app/app/features/forum/forum_page.dart';
+import 'package:estate_community_app/features/forum/forum_page.dart';
 import 'package:flutter/material.dart';
 
 class AddPage extends StatefulWidget {

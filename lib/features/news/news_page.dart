@@ -1,5 +1,5 @@
-import 'package:estate_community_app/app/features/news/cubit/news_cubit.dart';
-import 'package:estate_community_app/app/features/news_details/pages/news_details_page.dart';
+import 'package:estate_community_app/features/news/cubit/news_cubit.dart';
+import 'package:estate_community_app/features/news_details/pages/news_details_page.dart';
 import 'package:estate_community_app/app/injection_container.dart';
 import 'package:estate_community_app/models/news_model.dart';
 import 'package:flutter/material.dart';

@@ -1,5 +1,5 @@
-import 'package:estate_community_app/app/features/forum/cubit/forum_cubit.dart';
-import 'package:estate_community_app/app/features/forum_details/pages/forum_details_page.dart';
+import 'package:estate_community_app/features/forum/cubit/forum_cubit.dart';
+import 'package:estate_community_app/features/forum_details/pages/forum_details_page.dart';
 import 'package:estate_community_app/app/injection_container.dart';
 import 'package:estate_community_app/models/forum_model.dart';
 import 'package:flutter/material.dart';

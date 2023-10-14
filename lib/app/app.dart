@@ -1,6 +1,6 @@
 import 'package:estate_community_app/app/cubit/root_cubit.dart';
-import 'package:estate_community_app/app/features/home/home_page.dart';
-import 'package:estate_community_app/app/features/login/login_page.dart';
+import 'package:estate_community_app/features/home/home_page.dart';
+import 'package:estate_community_app/features/login/login_page.dart';
 import 'package:estate_community_app/app/injection_container.dart';
 
 import 'package:flutter/material.dart';
