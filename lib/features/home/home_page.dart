@@ -5,12 +5,12 @@ import 'package:estate_community_app/features/forum/forum_page.dart';
 import 'package:estate_community_app/features/news/news_page.dart';
 import 'package:estate_community_app/features/parking/parkingplan_page.dart';
 import 'package:estate_community_app/features/waste/waste_page.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:estate_community_app/models/user_model.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key, required this.user}) : super(key: key);
-  final User user;
+  final UserModel user;
 
   @override
   State<HomePage> createState() => _HomePageState();

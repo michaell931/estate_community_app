@@ -1,4 +1,4 @@
-import 'package:estate_community_app/app/cubit/root_cubit.dart';
+import 'package:estate_community_app/app/cubit/auth_cubit.dart';
 import 'package:estate_community_app/features/home/home_page.dart';
 import 'package:estate_community_app/features/login/login_page.dart';
 import 'package:estate_community_app/app/injection_container.dart';
@@ -19,21 +19,21 @@ class MyApp extends StatelessWidget {
           primary: const Color.fromARGB(0, 0, 0, 0),
         ),
       ),
-      home: const RootPage(),
+      home: const AuthPage(),
     );
   }
 }
 
-class RootPage extends StatelessWidget {
-  const RootPage({
+class AuthPage extends StatelessWidget {
+  const AuthPage({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<RootCubit>(
+    return BlocProvider<AuthCubit>(
       create: (context) => getIt()..start(),
-      child: BlocBuilder<RootCubit, RootState>(
+      child: BlocBuilder<AuthCubit, AuthState>(
         builder: (context, state) {
           final user = state.user;
           if (user == null) {

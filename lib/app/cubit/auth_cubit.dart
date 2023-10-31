@@ -1,19 +1,19 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:estate_community_app/repositories/root_repository.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:estate_community_app/models/user_model.dart';
+import 'package:estate_community_app/repositories/auth_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
-part 'root_state.dart';
-part 'root_cubit.freezed.dart';
+part 'auth_state.dart';
+part 'auth_cubit.freezed.dart';
 
 @injectable
-class RootCubit extends Cubit<RootState> {
-  RootCubit(this._rootRepository)
+class AuthCubit extends Cubit<AuthState> {
+  AuthCubit({required this.authRepository})
       : super(
-          const RootState(
+          const AuthState(
             user: null,
             isLoading: false,
             errorMessage: '',
@@ -21,24 +21,31 @@ class RootCubit extends Cubit<RootState> {
         );
 
   StreamSubscription? _streamSubscription;
-  final RootRepository _rootRepository;
+  final AuthRepository authRepository;
 
   Future<void> signOut() async {
-    await _rootRepository.signOut();
+    await authRepository.signOut(); // validate
   }
 
+// 1 (success)
+// emits loading true
+// emits loading false and user
+
+// 2 (error)
+// emits loading true
+// emits loading false and error
   Future<void> start() async {
     emit(
-      const RootState(
+      const AuthState(
         user: null,
         isLoading: true,
         errorMessage: '',
       ),
     );
 
-    _streamSubscription = _rootRepository.authenticationCheck()((user) {
+    _streamSubscription = authRepository.authenticationCheck().listen((user) {
       emit(
-        RootState(
+        AuthState(
           user: user,
           isLoading: false,
           errorMessage: '',
@@ -47,7 +54,7 @@ class RootCubit extends Cubit<RootState> {
     })
       ..onError((error) {
         emit(
-          RootState(
+          AuthState(
             user: null,
             isLoading: false,
             errorMessage: error.toString(),

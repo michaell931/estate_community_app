@@ -52,6 +52,9 @@ dependencies:
   freezed_annotation: ^2.4.1
   get_it: ^7.6.4
   injectable: ^2.3.2
+  mocktail: ^1.0.1
+  matcher: ^0.12.16
+  
     
 flutter_native_splash:
   android: true
@@ -78,6 +81,7 @@ dev_dependencies:
   
  
 
+  bloc_test: ^9.1.4
   build_runner: ^2.4.6
   flutter_test:
     sdk: flutter

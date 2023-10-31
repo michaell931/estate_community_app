@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'root_cubit.dart';
+part of 'auth_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,28 +15,30 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$RootState {
-  User? get user => throw _privateConstructorUsedError;
+mixin _$AuthState {
+  UserModel? get user => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $RootStateCopyWith<RootState> get copyWith =>
+  $AuthStateCopyWith<AuthState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $RootStateCopyWith<$Res> {
-  factory $RootStateCopyWith(RootState value, $Res Function(RootState) then) =
-      _$RootStateCopyWithImpl<$Res, RootState>;
+abstract class $AuthStateCopyWith<$Res> {
+  factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
+      _$AuthStateCopyWithImpl<$Res, AuthState>;
   @useResult
-  $Res call({User? user, bool isLoading, String errorMessage});
+  $Res call({UserModel? user, bool isLoading, String errorMessage});
+
+  $UserModelCopyWith<$Res>? get user;
 }
 
 /// @nodoc
-class _$RootStateCopyWithImpl<$Res, $Val extends RootState>
-    implements $RootStateCopyWith<$Res> {
-  _$RootStateCopyWithImpl(this._value, this._then);
+class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
+    implements $AuthStateCopyWith<$Res> {
+  _$AuthStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -54,7 +56,7 @@ class _$RootStateCopyWithImpl<$Res, $Val extends RootState>
       user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as User?,
+              as UserModel?,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -65,25 +67,40 @@ class _$RootStateCopyWithImpl<$Res, $Val extends RootState>
               as String,
     ) as $Val);
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserModelCopyWith<$Res>? get user {
+    if (_value.user == null) {
+      return null;
+    }
+
+    return $UserModelCopyWith<$Res>(_value.user!, (value) {
+      return _then(_value.copyWith(user: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
-abstract class _$$RootStateImplCopyWith<$Res>
-    implements $RootStateCopyWith<$Res> {
-  factory _$$RootStateImplCopyWith(
-          _$RootStateImpl value, $Res Function(_$RootStateImpl) then) =
-      __$$RootStateImplCopyWithImpl<$Res>;
+abstract class _$$AuthStateImplCopyWith<$Res>
+    implements $AuthStateCopyWith<$Res> {
+  factory _$$AuthStateImplCopyWith(
+          _$AuthStateImpl value, $Res Function(_$AuthStateImpl) then) =
+      __$$AuthStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({User? user, bool isLoading, String errorMessage});
+  $Res call({UserModel? user, bool isLoading, String errorMessage});
+
+  @override
+  $UserModelCopyWith<$Res>? get user;
 }
 
 /// @nodoc
-class __$$RootStateImplCopyWithImpl<$Res>
-    extends _$RootStateCopyWithImpl<$Res, _$RootStateImpl>
-    implements _$$RootStateImplCopyWith<$Res> {
-  __$$RootStateImplCopyWithImpl(
-      _$RootStateImpl _value, $Res Function(_$RootStateImpl) _then)
+class __$$AuthStateImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$AuthStateImpl>
+    implements _$$AuthStateImplCopyWith<$Res> {
+  __$$AuthStateImplCopyWithImpl(
+      _$AuthStateImpl _value, $Res Function(_$AuthStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -93,11 +110,11 @@ class __$$RootStateImplCopyWithImpl<$Res>
     Object? isLoading = null,
     Object? errorMessage = null,
   }) {
-    return _then(_$RootStateImpl(
+    return _then(_$AuthStateImpl(
       user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as User?,
+              as UserModel?,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -112,14 +129,14 @@ class __$$RootStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$RootStateImpl implements _RootState {
-  const _$RootStateImpl(
+class _$AuthStateImpl implements _AuthState {
+  const _$AuthStateImpl(
       {required this.user,
       required this.isLoading,
       required this.errorMessage});
 
   @override
-  final User? user;
+  final UserModel? user;
   @override
   final bool isLoading;
   @override
@@ -127,14 +144,14 @@ class _$RootStateImpl implements _RootState {
 
   @override
   String toString() {
-    return 'RootState(user: $user, isLoading: $isLoading, errorMessage: $errorMessage)';
+    return 'AuthState(user: $user, isLoading: $isLoading, errorMessage: $errorMessage)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RootStateImpl &&
+            other is _$AuthStateImpl &&
             (identical(other.user, user) || other.user == user) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
@@ -148,24 +165,24 @@ class _$RootStateImpl implements _RootState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$RootStateImplCopyWith<_$RootStateImpl> get copyWith =>
-      __$$RootStateImplCopyWithImpl<_$RootStateImpl>(this, _$identity);
+  _$$AuthStateImplCopyWith<_$AuthStateImpl> get copyWith =>
+      __$$AuthStateImplCopyWithImpl<_$AuthStateImpl>(this, _$identity);
 }
 
-abstract class _RootState implements RootState {
-  const factory _RootState(
-      {required final User? user,
+abstract class _AuthState implements AuthState {
+  const factory _AuthState(
+      {required final UserModel? user,
       required final bool isLoading,
-      required final String errorMessage}) = _$RootStateImpl;
+      required final String errorMessage}) = _$AuthStateImpl;
 
   @override
-  User? get user;
+  UserModel? get user;
   @override
   bool get isLoading;
   @override
   String get errorMessage;
   @override
   @JsonKey(ignore: true)
-  _$$RootStateImplCopyWith<_$RootStateImpl> get copyWith =>
+  _$$AuthStateImplCopyWith<_$AuthStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

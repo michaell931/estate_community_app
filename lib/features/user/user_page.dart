@@ -1,4 +1,4 @@
-import 'package:estate_community_app/app/cubit/root_cubit.dart';
+import 'package:estate_community_app/app/cubit/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -29,7 +29,7 @@ class UserPage extends StatelessWidget {
           ),
           ElevatedButton(
               onPressed: () {
-                context.read<RootCubit>().signOut();
+                context.read<AuthCubit>().signOut();
               },
               child: const Text('Wyloguj'))
         ],
