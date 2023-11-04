@@ -1,5 +1,16 @@
 ESTATE COMMUNITY APP - Try it!
 
+<img width="303" alt="Zrzut ekranu 2023-11-4 o 18 42 23" src="https://github.com/michaell931/estate_community_app/assets/112571041/8f71418c-597e-4985-ac22-d02b32c7d4fc">
+
+<img width="298" alt="Zrzut ekranu 2023-11-4 o 18 43 04" src="https://github.com/michaell931/estate_community_app/assets/112571041/da5fef58-d936-42c1-8b2c-08dee090c682">
+
+<img width="312" alt="Zrzut ekranu 2023-11-4 o 18 42 55" src="https://github.com/michaell931/estate_community_app/assets/112571041/ea137747-41f3-4354-a9b7-022f57ba8242">
+
+<img width="312" alt="Zrzut ekranu 2023-11-4 o 18 42 42" src="https://github.com/michaell931/estate_community_app/assets/112571041/586d91ed-105b-4ef0-bff5-531c6dbf30fd">
+
+
+
+
 Introducing our innovative mobile application designed specifically for residents of your neighborhood! With this app, you'll have all the essential information at your fingertips, making community living even more convenient and enjoyable.
 
 1. Stay up-to-date with the latest news and announcements from your neighborhood, ensuring you never miss important updates or events.
