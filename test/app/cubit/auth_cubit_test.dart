@@ -9,7 +9,6 @@ import 'package:mocktail/mocktail.dart';
 class MockAuthRepository extends Mock implements AuthRepository {}
 
 void main() {
-  // late RootCubit sut;
   late MockAuthRepository mockAuthRepository;
 
   setUp(() {
@@ -65,5 +64,17 @@ void main() {
         ),
       ],
     );
+  });
+
+  group('signOut()', () {
+    blocTest<AuthCubit, AuthState>('signOut() called 1 time',
+        build: () {
+          when(() => mockAuthRepository.signOut()).thenAnswer((_) async {});
+          return AuthCubit(authRepository: mockAuthRepository);
+        },
+        act: (cubit) => cubit.signOut(),
+        verify: (_) {
+          verify(() => mockAuthRepository.signOut()).called(1);
+        });
   });
 }

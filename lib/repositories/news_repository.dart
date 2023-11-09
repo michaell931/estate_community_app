@@ -12,9 +12,9 @@ class NewsRepository {
       return querySnapshot.docs.map(
         (doc) {
           return NewsModel(
+            id: doc.id,
             title: doc['title'],
             imageUrl: doc['image_url'],
-            id: doc['id'],
             content: doc['content'],
           );
         },

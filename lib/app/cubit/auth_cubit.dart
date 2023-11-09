@@ -24,16 +24,9 @@ class AuthCubit extends Cubit<AuthState> {
   final AuthRepository authRepository;
 
   Future<void> signOut() async {
-    await authRepository.signOut(); // validate
+    await authRepository.signOut(); // verify
   }
 
-// 1 (success)
-// emits loading true
-// emits loading false and user
-
-// 2 (error)
-// emits loading true
-// emits loading false and error
   Future<void> start() async {
     emit(
       const AuthState(

@@ -12,8 +12,8 @@ class ForumDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          ForumDetailsCubit(ForumRepository())..getPostWithID(id),
+      create: (context) => ForumDetailsCubit(forumRepository: ForumRepository())
+        ..getPostWithID(id),
       child: BlocBuilder<ForumDetailsCubit, ForumDetailsState>(
         builder: (context, state) {
           final forumModels = state.forumModel;

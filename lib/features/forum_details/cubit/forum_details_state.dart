@@ -1,7 +1,9 @@
 part of 'forum_details_cubit.dart';
 
-class ForumDetailsState {
-  final ForumModel? forumModel;
-
-  ForumDetailsState({required this.forumModel});
+@freezed
+class ForumDetailsState with _$ForumDetailsState {
+  const factory ForumDetailsState({
+    required final ForumModel? forumModel,
+    required final String? errorMessage,
+  }) = _ForumDetailsState;
 }

@@ -35,8 +35,10 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i5.NewsRepository>(() => _i5.NewsRepository());
     gh.factory<_i6.AuthCubit>(
         () => _i6.AuthCubit(authRepository: gh<_i3.AuthRepository>()));
-    gh.factory<_i7.ForumCubit>(() => _i7.ForumCubit(gh<_i4.ForumRepository>()));
-    gh.factory<_i8.NewsCubit>(() => _i8.NewsCubit(gh<_i5.NewsRepository>()));
+    gh.factory<_i7.ForumCubit>(
+        () => _i7.ForumCubit(forumRepository: gh<_i4.ForumRepository>()));
+    gh.factory<_i8.NewsCubit>(
+        () => _i8.NewsCubit(newsRepository: gh<_i5.NewsRepository>()));
     return this;
   }
 }

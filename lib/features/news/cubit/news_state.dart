@@ -1,13 +1,10 @@
 part of 'news_cubit.dart';
 
-@immutable
-class NewsState {
-  final List<NewsModel> documents;
-  final bool isLoading;
-  final String errorMessage;
-
-  const NewsState(
-      {this.documents = const [],
-      required this.isLoading,
-      required this.errorMessage});
+@freezed
+class NewsState with _$NewsState {
+  const factory NewsState({
+    required final List<NewsModel> documents,
+    required final bool isLoading,
+    required final String errorMessage,
+  }) = _NewsState;
 }

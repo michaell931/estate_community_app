@@ -3,22 +3,22 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:estate_community_app/models/news_model.dart';
 import 'package:estate_community_app/repositories/news_repository.dart';
-import 'package:flutter/foundation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:meta/meta.dart';
 
 part 'news_state.dart';
+part 'news_cubit.freezed.dart';
 
 @injectable
 class NewsCubit extends Cubit<NewsState> {
-  NewsCubit(this._newsRepository)
+  NewsCubit({required this.newsRepository})
       : super(const NewsState(
           documents: [],
           errorMessage: '',
           isLoading: false,
         ));
 
-  final NewsRepository _newsRepository;
+  final NewsRepository newsRepository;
 
   StreamSubscription? _streamSubscription;
 
@@ -31,7 +31,7 @@ class NewsCubit extends Cubit<NewsState> {
       ),
     );
 
-    _streamSubscription = _newsRepository.getItemsStream().listen((data) {
+    _streamSubscription = newsRepository.getItemsStream().listen((data) {
       emit(
         NewsState(
           documents: data,

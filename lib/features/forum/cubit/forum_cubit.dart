@@ -4,14 +4,15 @@ import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:estate_community_app/models/forum_model.dart';
 import 'package:estate_community_app/repositories/forum_repository.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:meta/meta.dart';
 
 part 'forum_state.dart';
+part 'forum_cubit.freezed.dart';
 
 @injectable
 class ForumCubit extends Cubit<ForumState> {
-  ForumCubit(this._forumRepository)
+  ForumCubit({required this.forumRepository})
       : super(const ForumState(
           documents: [],
           errorMessage: '',
@@ -19,7 +20,7 @@ class ForumCubit extends Cubit<ForumState> {
         ));
 
   StreamSubscription? _streamSubscription;
-  final ForumRepository _forumRepository;
+  final ForumRepository forumRepository;
 
   Future<void> start() async {
     emit(
@@ -30,7 +31,7 @@ class ForumCubit extends Cubit<ForumState> {
       ),
     );
 
-    _streamSubscription = _forumRepository.getItemsStream().listen((data) {
+    _streamSubscription = forumRepository.getItemsStream().listen((data) {
       emit(
         ForumState(
           documents: data,
