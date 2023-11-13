@@ -1,3 +1,4 @@
+import 'package:estate_community_app/data_sources/forum_data_source.dart';
 import 'package:estate_community_app/features/forum_details/cubit/forum_details_cubit.dart';
 import 'package:estate_community_app/models/forum_model.dart';
 import 'package:estate_community_app/repositories/forum_repository.dart';
@@ -12,8 +13,9 @@ class ForumDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ForumDetailsCubit(forumRepository: ForumRepository())
-        ..getPostWithID(id),
+      create: (context) =>
+          ForumDetailsCubit(forumRepository: ForumRepository(ForumDataSource()))
+            ..getPostWithID(id),
       child: BlocBuilder<ForumDetailsCubit, ForumDetailsState>(
         builder: (context, state) {
           final forumModels = state.forumModel;
