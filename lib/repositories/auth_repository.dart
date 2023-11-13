@@ -6,15 +6,15 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class AuthRepository {
-  AuthRepository(this._authDataSource);
-  final AuthDataSource _authDataSource;
+  AuthRepository({required this.authDataSource});
+  final AuthDataSource authDataSource;
 
   Future<void> signOut() async {
-    _authDataSource.signOut();
+    authDataSource.signOut();
   }
 
   Stream<UserModel?> authenticationCheck() {
-    return _authDataSource.authenticationCheck().map((user) {
+    return authDataSource.authenticationCheck().map((user) {
       if (user == null) {
         return null;
       }

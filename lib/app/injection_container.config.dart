@@ -36,7 +36,7 @@ extension GetItInjectableX on _i1.GetIt {
     );
     gh.factory<_i3.AuthDataSource>(() => _i3.AuthDataSource());
     gh.factory<_i4.AuthRepository>(
-        () => _i4.AuthRepository(gh<_i3.AuthDataSource>()));
+        () => _i4.AuthRepository(authDataSource: gh<_i3.AuthDataSource>()));
     gh.factory<_i5.ForumDataSource>(() => _i5.ForumDataSource());
     gh.factory<_i6.ForumRepository>(
         () => _i6.ForumRepository(gh<_i5.ForumDataSource>()));
