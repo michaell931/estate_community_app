@@ -1,3 +1,4 @@
+import 'package:estate_community_app/data_sources/news_data_source.dart';
 import 'package:estate_community_app/features/news_details/cubit/news_details_cubit.dart';
 import 'package:estate_community_app/models/news_model.dart';
 import 'package:estate_community_app/repositories/news_repository.dart';
@@ -13,7 +14,7 @@ class NewsDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          NewsDetailsCubit(NewsRepository())..getNewsWithID(id),
+          NewsDetailsCubit(NewsRepository(NewsDataSource()))..getNewsWithID(id),
       child: BlocBuilder<NewsDetailsCubit, NewsDetailsState>(
         builder: (context, state) {
           final newsModels = state.newsModel;
