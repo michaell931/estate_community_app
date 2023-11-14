@@ -39,7 +39,7 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i4.AuthRepository(authDataSource: gh<_i3.AuthDataSource>()));
     gh.factory<_i5.ForumDataSource>(() => _i5.ForumDataSource());
     gh.factory<_i6.ForumRepository>(
-        () => _i6.ForumRepository(gh<_i5.ForumDataSource>()));
+        () => _i6.ForumRepository(forumDataSource: gh<_i5.ForumDataSource>()));
     gh.factory<_i7.NewsDataSource>(() => _i7.NewsDataSource());
     gh.factory<_i8.NewsRepository>(
         () => _i8.NewsRepository(gh<_i7.NewsDataSource>()));

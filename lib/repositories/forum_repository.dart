@@ -4,14 +4,14 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class ForumRepository {
-  ForumRepository(this._forumDataSource);
-  final ForumDataSource _forumDataSource;
+  ForumRepository({required this.forumDataSource});
+  final ForumDataSource forumDataSource;
 
   Stream<List<ForumModel>> getItemsStream() {
-    return _forumDataSource.getItemsStream();
+    return forumDataSource.getItemsStream();
   }
 
   Future<ForumModel> get({required String id}) async {
-    return _forumDataSource.get(id: id);
+    return forumDataSource.get(id: id);
   }
 }
