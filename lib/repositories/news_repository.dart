@@ -4,14 +4,14 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class NewsRepository {
-  NewsRepository(this._newsDataSource);
-  final NewsDataSource _newsDataSource;
+  NewsRepository({required this.newsDataSource});
+  final NewsDataSource newsDataSource;
 
   Stream<List<NewsModel>> getItemsStream() {
-    return _newsDataSource.getItemsStream();
+    return newsDataSource.getItemsStream();
   }
 
   Future<NewsModel> get({required String id}) async {
-    return _newsDataSource.get(id: id);
+    return newsDataSource.get(id: id);
   }
 }

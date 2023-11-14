@@ -14,7 +14,8 @@ class NewsDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          NewsDetailsCubit(NewsRepository(NewsDataSource()))..getNewsWithID(id),
+          NewsDetailsCubit(NewsRepository(newsDataSource: NewsDataSource()))
+            ..getNewsWithID(id),
       child: BlocBuilder<NewsDetailsCubit, NewsDetailsState>(
         builder: (context, state) {
           final newsModels = state.newsModel;
